@@ -720,6 +720,31 @@ form button {
   color: #000;
 }
 
+@media (max-width: 991.98px) {
+  .slider-form {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .slider-form {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 50px auto;
+    max-width: 400px;
+    -webkit-box-shadow: 0 20px 100px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 100px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 767.98px) and (max-width: 575.98px) {
+  .slider-form {
+    width: 90%;
+    padding: 20px 15px;
+  }
+}
+
 .slider-form-title {
   font-size: 18px;
   font-weight: bold;
@@ -734,6 +759,7 @@ form button {
   position: relative;
   margin-top: 0px;
   width: 100%;
+  min-height: 600px;
   height: calc( 94vh - 0px);
   margin-bottom: 5rem;
   opacity: 0;
@@ -750,14 +776,14 @@ form button {
 
 .main-slider .slick-slide {
   position: relative;
+  min-height: 600px;
   height: calc( 94vh - 0px);
   width: 100%;
   border: none;
 }
 
 .main-slider .slick-slide:not(.without_text):before {
-  background-color: #000;
-  opacity: .3;
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
@@ -907,11 +933,29 @@ form button {
           transform: translateY(100px);
 }
 
+@media (max-width: 1199.98px) {
+  .main-slider .caption {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .main-slider .caption {
+    width: 90vw;
+  }
+}
+
 .main-slider .caption .title {
   font-size: 40px;
   font-weight: bold;
   letter-spacing: .02em;
   line-height: 1.2;
+}
+
+@media (max-width: 1199.98px) {
+  .main-slider .caption .title {
+    font-size: 32px;
+  }
 }
 
 .main-slider .caption .subtitle {

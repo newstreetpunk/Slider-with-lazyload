@@ -32,6 +32,18 @@ $black: #000
 		right: 8vw
 		padding: 35px
 		color: $black
+		+media-breakpoint-down(md)
+			max-width: 340px
+		+media-breakpoint-down(sm)
+			position: relative
+			top: auto
+			right: auto
+			margin: 50px auto
+			max-width: 400px
+			box-shadow: 0 20px 100px rgba($black, .3)
+			+media-breakpoint-down(xs)
+				width: 90%
+				padding: 20px 15px
 		&-title
 			font-size: 18px
 			font-weight: bold
@@ -43,6 +55,7 @@ $black: #000
 	position: relative
 	margin-top: $height_header
 	width: 100%
+	min-height: 600px
 	height: $height_banner
 	margin-bottom: 5rem
 	opacity: 0
@@ -56,6 +69,7 @@ $black: #000
 
 	.slick-slide
 		position: relative
+		min-height: 600px
 		height: $height_banner
 		width: 100%
 		border: none
@@ -64,8 +78,7 @@ $black: #000
 		&:not(.without_text):before
 			@extend %filled_obj
 			@extend %bv_hidden
-			background-color: #000
-			opacity: .3
+			background-color: rgba($black, .3)
 			z-index: 1
 		
 		video
@@ -131,9 +144,7 @@ $black: #000
 		transform: translateY(-50%)
 		width: 40px
 		height: 40px
-		// border-radius: 50%
 		background-color: white
-		// left: 20px
 		padding: 0
 		border: none
 		cursor: pointer
@@ -169,11 +180,17 @@ $black: #000
 		transition: all .3s ease
 		transform: translateY(100px)
 		@extend %bv_hidden
+		+media-breakpoint-down(lg)
+			width: 40vw
+		+media-breakpoint-down(sm)
+			width: 90vw
 		.title
 			font-size: 40px
 			font-weight: bold
 			letter-spacing: .02em
 			line-height: 1.2
+			+media-breakpoint-down(lg)
+				font-size: 32px
 		.subtitle
 			font-size: 26px
 			&.check
@@ -220,12 +237,8 @@ $black: #000
 			&.slick-active
 				button
 					border-color: white
-					// background-color: $orange-logo
 					box-shadow: 0 0 0 2px $accent
-					opacity: 1
-			
-		
-	
+					opacity: 1	
 
 
 @keyframes slideIn
