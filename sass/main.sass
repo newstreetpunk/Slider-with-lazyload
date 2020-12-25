@@ -1,0 +1,42 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.6
+	font-weight: 300
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+
+// Стили для формы, обычно уже доджны присутствлвать
+form
+	input, button, small, textarea
+		display: block
+		width: 100%
+	input
+		font-size: 16px
+		height: initial
+		font-weight: 300
+		background-color: #f0f0f0
+		padding: 10px 18px
+		border: 1px solid transparent
+		margin: 20px 0
+	button
+		margin: 20px 0
+		border: none
+		background-color: $accent
+		color: $white
+		padding: 10px 20px
+
+@import "sections/slider"

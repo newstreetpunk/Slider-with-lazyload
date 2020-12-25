@@ -1,0 +1,10 @@
+/assets/
+/.git/
+/**/_backstage
+/**/package-lock.json
+/**/Thumbs.db
+/**/*.DS_Store
+sftp-config.json
+/img/new_banner/
+/js/wnew/
+/lead/
