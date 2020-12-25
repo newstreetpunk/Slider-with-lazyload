@@ -714,18 +714,27 @@ form button {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.6);
   position: absolute;
-  top: 6vh;
-  right: 6vw;
+  top: 8vh;
+  right: 8vw;
   padding: 35px;
   color: #000;
 }
 
+.slider-form-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.slider-form-title span {
+  color: tomato;
+}
+
 .main-slider {
   position: relative;
-  margin-top: 100px;
+  margin-top: 0px;
   width: 100%;
-  height: calc( 94vh - 100px);
-  min-height: 600px;
+  height: calc( 94vh - 0px);
   margin-bottom: 5rem;
   opacity: 0;
   visibility: hidden;
@@ -741,8 +750,7 @@ form button {
 
 .main-slider .slick-slide {
   position: relative;
-  min-height: 600px;
-  height: calc( 94vh - 100px);
+  height: calc( 94vh - 0px);
   width: 100%;
   border: none;
 }
@@ -884,8 +892,8 @@ form button {
 
 .main-slider .caption {
   position: absolute;
-  top: 6vh;
-  left: 6vw;
+  top: 8vh;
+  left: 8vw;
   width: 50vw;
   color: #fff;
   margin: 0;
@@ -953,7 +961,7 @@ form button {
           box-shadow: 0 0 0 0 transparent;
   vertical-align: middle;
   color: transparent;
-  background-color: #007FC7;
+  background-color: tomato;
   -webkit-transition: all .3s ease;
   -o-transition: all .3s ease;
   transition: all .3s ease;
@@ -975,8 +983,8 @@ form button {
 
 .slick-dots li.slick-active button {
   border-color: white;
-  -webkit-box-shadow: 0 0 0 2px #007FC7;
-          box-shadow: 0 0 0 2px #007FC7;
+  -webkit-box-shadow: 0 0 0 2px tomato;
+          box-shadow: 0 0 0 2px tomato;
   opacity: 1;
 }
 

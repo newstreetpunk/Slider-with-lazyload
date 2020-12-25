@@ -1,15 +1,12 @@
-$height_header: 100px
-$height_header_mobile: 90px
-$height_banner: calc( 94vh - 100px )
-$height_banner_mobile: calc( 80vh - 90px )
+$height_header: 0px //если шапка имеет абсолютное или фиксированное положение, устанавливаем значение, равное высоте шапки
+$height_header_mobile: 0px //если шапка имеет абсолютное или фиксированное положение, устанавливаем значение, равное высоте шапки
+$height_banner: calc( 94vh - #{$height_header} )
+$height_banner_mobile: calc( 80vh - #{$height_header_mobile} )
 
 $accent: tomato
 
 $white: #fff
 $black: #000
-
-$blue-logo: #007FC7
-
 
 
 %bv_hidden
@@ -31,17 +28,22 @@ $blue-logo: #007FC7
 		width: 100%
 		background-color: rgba($white, .6)
 		position: absolute
-		top: 6vh
-		right: 6vw
+		top: 8vh
+		right: 8vw
 		padding: 35px
 		color: $black
+		&-title
+			font-size: 18px
+			font-weight: bold
+			margin-bottom: 10px
+			span
+				color: $accent
 
 .main-slider
 	position: relative
 	margin-top: $height_header
 	width: 100%
 	height: $height_banner
-	min-height: 600px
 	margin-bottom: 5rem
 	opacity: 0
 	visibility: hidden
@@ -54,7 +56,6 @@ $blue-logo: #007FC7
 
 	.slick-slide
 		position: relative
-		min-height: 600px
 		height: $height_banner
 		width: 100%
 		border: none
@@ -152,15 +153,14 @@ $blue-logo: #007FC7
 			margin-left: -5px
 	.next-arrow
 		left: auto
-		// right: 20px
 		right: 0
 		svg
 			transform: rotate(180deg)
 			margin-right: -5px
 	.caption
 		position: absolute
-		top: 6vh
-		left: 6vw
+		top: 8vh
+		left: 8vw
 		width: 50vw
 		color: #fff
 		margin: 0
@@ -206,7 +206,7 @@ $blue-logo: #007FC7
 				box-shadow: 0 0 0 0 transparent
 				vertical-align: middle
 				color: transparent
-				background-color: $blue-logo
+				background-color: $accent
 				transition: all .3s ease
 				opacity: .4
 				padding: 0
@@ -221,7 +221,7 @@ $blue-logo: #007FC7
 				button
 					border-color: white
 					// background-color: $orange-logo
-					box-shadow: 0 0 0 2px $blue-logo
+					box-shadow: 0 0 0 2px $accent
 					opacity: 1
 			
 		
