@@ -124,7 +124,7 @@ $(function(){
 			playPauseVideo(slick,"play");
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
-			// console.log([event, slick, image, imageSource]);
+			console.log([event, slick, image, imageSource]);
 			image.parent().css('background-image', 'url("' + imageSource + '")'); 
 			image.hide();
 			image.parent().addClass('show');
@@ -143,8 +143,8 @@ $(function(){
 			rows: 0,
 			// fade:true,
 			autoplaySpeed: 4000,
-			lazyLoad: "progressive",
-			// lazyLoad: "ondemand",
+			//lazyLoad: "progressive",
+			lazyLoad: "ondemand",
 			speed: 600,
 			arrows: true,
 			dots: true,
