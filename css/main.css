@@ -762,7 +762,6 @@ form button {
   min-height: 600px;
   height: calc( 94vh - 0px);
   margin-bottom: 5rem;
-  opacity: 0;
   visibility: hidden;
   -webkit-transition: all 1.2s ease;
   -o-transition: all 1.2s ease;
@@ -814,7 +813,6 @@ form button {
 }
 
 .main-slider .slick-slide .slide-image {
-  opacity: 0;
   height: 100%;
   background-size: cover;
   background-position: center;

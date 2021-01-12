@@ -44,6 +44,7 @@
 					})
 
 					setPreviewImg(obj, undefined, resultArr);
+					window.addEventListener('resize', function(){setPreviewImg(obj, undefined, resultArr)});
 				} else {
 					url = obj.getAttribute('data-bgset');
 
@@ -70,9 +71,9 @@
                         img.src = (url) + '?w=100';
 
     				img.onload = function() {
-    					if (!obj.style.backgroundImage) {
+    					// if (!obj.style.backgroundImage) {
     						obj.style.backgroundImage = 'url(' + img.src + ')';
-    					}
+    					// }
     				}
 				}
 				else
@@ -81,9 +82,9 @@
 
     				img.src = (url) + '?w=100&h=0';
     				img.onload = function() {
-    					if (!obj.style.backgroundImage) {
+    					// if (!obj.style.backgroundImage) {
     						obj.style.backgroundImage = 'url(' + img.src + ')';
-    					}
+    					// }
     				}
                 }
 			}
@@ -121,14 +122,14 @@
 
 
 				img.onload = function() {
-					if (!obj.style.backgroundImage) {
+					// if (!obj.style.backgroundImage) {
 						obj.style.backgroundImage = 'url(' + img.src + ')';
-					}
+					// }
 				}
 			}
 		}
 	} catch (error) {
 		console.error(error);
 	}
-	window.addEventListener('resize', setPreviewImg(obj, undefined, resultArr));
+	
 })()

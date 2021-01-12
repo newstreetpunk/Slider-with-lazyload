@@ -124,7 +124,7 @@ $(function(){
 			playPauseVideo(slick,"play");
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
-			console.log([event, slick, image, imageSource]);
+			//console.log([event, slick, image, imageSource]);
 			image.closest('.slide-image').css('background-image', 'url("' + imageSource + '")'); 
 			image.hide();
 			image.closest('.slide-image').addClass('show');
