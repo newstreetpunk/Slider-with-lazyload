@@ -103,7 +103,7 @@ $(function(){
 
 	// DOM Ready
 	$(function() {
-		return;
+
 		// Initialize
 		slideWrapper.on("init", function(slick){
 			slick = $(slick.currentTarget);
@@ -145,6 +145,7 @@ $(function(){
 			// fade:true,
 			autoplaySpeed: 4000,
 			//lazyLoad: "progressive",
+			// infinite: false, 
 			lazyLoad: "ondemand",
 			speed: 600,
 			arrows: true,
