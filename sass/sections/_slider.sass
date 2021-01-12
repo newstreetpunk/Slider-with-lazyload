@@ -65,7 +65,7 @@ $black: #000
 	&.slick-initialized
 		opacity: 1
 		visibility: visible
-	
+
 
 	.slick-slide
 		position: relative
@@ -73,14 +73,14 @@ $black: #000
 		height: $height_banner
 		width: 100%
 		border: none
-			
+
 		@extend %bv_hidden
 		&:not(.without_text):before
 			@extend %filled_obj
 			@extend %bv_hidden
 			background-color: rgba($black, .3)
 			z-index: 1
-		
+
 		video
 			display: block
 			position: absolute
@@ -92,15 +92,15 @@ $black: #000
 			height: auto
 			transform: translate(-50%, -50%)
 			object-fit: cover
-		
+
 		iframe
 			position: relative
 			pointer-events: none
-		
+
 		figure
 			position: relative
 			height: 100%
-		
+
 		.slide-image
 			// opacity: 0
 			height: 100%
@@ -115,21 +115,21 @@ $black: #000
 			width: 100%
 			opacity: 0
 			visibility: hidden
-		
+
 		.loading
 			position: absolute
 			top: 44%
 			left: 0
 			text-align: center
 			width: 100%
-		
+
 		.slide-media
 			animation: slideOut .4s cubic-bezier(0.4, 0.29, 0.01, 1)
-		
+
 		&.slick-active
 			z-index: 1
 			.slide-media
-				animation: slideIn 2.4s cubic-bezier(0.4, 0.29, 0.01, 1)	
+				animation: slideIn 2.4s cubic-bezier(0.4, 0.29, 0.01, 1)
 			.caption
 				opacity: 1
 				transform: translateY(0)
@@ -137,7 +137,7 @@ $black: #000
 		&.slick-cloned
 			video
 				width: 100%
-			
+
 	.arrow
 		position: absolute
 		top: 52%
@@ -229,7 +229,7 @@ $black: #000
 				padding: 0
 				&:focus
 					outline: none
-				
+
 				&:hover
 					opacity: 1
 				&::before
@@ -238,18 +238,18 @@ $black: #000
 				button
 					border-color: white
 					box-shadow: 0 0 0 2px $accent
-					opacity: 1	
+					opacity: 1
 
 
 @keyframes slideIn
 	from
-		filter: blur(15px)	
+		filter: blur(15px)
 	to
-		filter: blur(0)	
+		filter: blur(0)
 
 @keyframes slideOut
 	from
-		filter: blur(0)	
+		filter: blur(0)
 	to
 		filter: blur(15px)
-	
+

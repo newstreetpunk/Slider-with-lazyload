@@ -103,6 +103,7 @@ $(function(){
 
 	// DOM Ready
 	$(function() {
+		return;
 		// Initialize
 		slideWrapper.on("init", function(slick){
 			slick = $(slick.currentTarget);

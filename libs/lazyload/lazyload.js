@@ -19,9 +19,9 @@
 		let _sheet = document.getElementById(_sheetId) || document.createElement('style');
 		_sheet.id = _sheetId;
 		let className = "pseudoStyle" + UID.getNew();
-		
-		_this.className +=  " "+className; 
-		
+
+		_this.className +=  " "+className;
+
 		_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
 		_head.appendChild(_sheet);
 		return this;
@@ -153,8 +153,10 @@
 			};
 
 			this.observer = new IntersectionObserver(function(entries) {
+				console.log([156, entries]);
 				Array.prototype.forEach.call(entries, function (entry) {
 					if (entry.isIntersecting) {
+						console.log([158, entry.isIntersecting, entry.target]);
 						self.observer.unobserve(entry.target);
 						self.oneFunc(entry.target);
 					}
@@ -182,6 +184,7 @@
 		},
 
 		oneFunc: function (smth) {
+			console.log([smth]);
 			let src = smth.getAttribute(this.settings.src);
 			let srcset = smth.getAttribute(this.settings.srcset);
 			let srcbefore = smth.getAttribute(this.settings.srcbefore);
@@ -192,7 +195,7 @@
 			let old_srcclass = smth.getAttribute(this.settings.old_srcclass);
 			let srcbackground = smth.getAttribute(this.settings.srcbackground);
 			let srcbackgroundimageset = smth.getAttribute(this.settings.srcbackgroundimageset);
-			let removeSelector = false; 
+			let removeSelector = false;
 			let notRemoveLazyclassNow = false;
 			let loop = false;
 			if ('img' === smth.tagName.toLowerCase()) {
@@ -260,19 +263,8 @@
 				smth.style.backgroundImage = 'url("' + srcbackground + '")';
 			} else if (srcbackgroundimageset !== null) {
 
-				function lazyloadFromSet(){
-					let imageSetLinks = srcbackgroundimageset.split(',');
-					let desktopImg = imageSetLinks[0];
-					let mobileImg = imageSetLinks[1];
-					console.log(desktopImg);
-					console.log(mobileImg);
-				}				
-
-				if(loop === false) {
-
-					lazyloadFromSet();
-					loop = true;
-				}
+				// this.lazyloadFromSet(srcbackgroundimageset);
+				console.log([smth, srcbackgroundimageset]);
 				// let firstUrlLink = imageSetLinks[0].substr(0, imageSetLinks[0].indexOf(' ')) || imageSetLinks[0]; // Substring before ... 1x
 				// firstUrlLink = firstUrlLink.indexOf('url(') === -1 ? 'url(' + firstUrlLink + ')' : firstUrlLink;
 				// if (imageSetLinks.length === 1) {
@@ -288,6 +280,13 @@
 			}
 		},
 
+		lazyloadFromSet: function(srcset) {
+			let imageSetLinks = srcset.split(',');
+			let desktopImg = imageSetLinks[0];
+			let mobileImg = imageSetLinks[1];
+			console.log([desktopImg, mobileImg]);
+		},
+
 		removeSelector: function (smth) {
 			smth.classList.remove(this.settings.selector.split('.').join(""));
 			smth.parentNode.classList.remove(this.settings.selectorparent.split('.').join(""));
@@ -296,9 +295,9 @@
 		loadImg: function (url, callback) {
 
 			if (typeof url !== 'undefined') {
-				
+
 				let src = '';
-				
+
 				if(typeof url !== 'string') {
 					let windowWidth = document.body.clientWidth;
 

@@ -121,7 +121,7 @@ function slider_styles() {
 function slider_scripts() {
 	return src(projects.slider.scripts.src)
 	.pipe(concat(projects.slider.scripts.output))
-	.pipe(uglify()) // Minify js (opt.)
+	// .pipe(uglify()) // Minify js (opt.)
 	.pipe(header(projects.slider.forProd))
 	.pipe(dest(projects.slider.scripts.dest))
 	.pipe(browserSync.stream())

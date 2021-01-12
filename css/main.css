@@ -1073,3 +1073,14 @@ form button {
             filter: blur(15px);
   }
 }
+
+.main-slider1 .item {
+  height: 400px;
+  margin: 2000px 0;
+  display: block;
+}
+
+.main-slider1 .item .slide-image,
+.main-slider1 .item .slide-media {
+  height: 400px;
+}
