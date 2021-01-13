@@ -131,8 +131,6 @@ $(function(){
 
 	$(window).on('resize', function(){
 		let screenWidth = $(window).width();
-		console.log(screenWidth);
-		console.log(brackpoint);
 		if (screenWidth <= brackpoint && res == false) {
 			slideWrapper.slick('unslick');
 			lazyloadFromSet();
