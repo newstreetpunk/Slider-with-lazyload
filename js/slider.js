@@ -101,9 +101,34 @@ $(function(){
 		});
 	}
 
+	function lazyloadFromSet() {
+		let parent = $('.image-set');
+
+		parent.each(function(){
+			let th = $(this);
+			let attr = th.data('src-background-image-set');
+			let imageSetLinks = attr.split(',');
+			let desktopImg = imageSetLinks[0];
+			let mobileImg = imageSetLinks[1].split('|')[1];
+			let brackpoint = parseInt(imageSetLinks[1].split('|')[0].replace(/\D+/g,''));
+			let screenWidth = $(window).width();
+			let urlImg = '';
+
+			if (screenWidth <= brackpoint) {
+				urlImg = mobileImg;
+			}else{
+				urlImg = desktopImg;
+			}
+
+			th.append('<img data-lazy="'+urlImg+'" class="image-entity">');
+		});
+
+	}
+
+	lazyloadFromSet();
+
 	// DOM Ready
 	$(function() {
-
 		// Initialize
 		slideWrapper.on("init", function(slick){
 			slick = $(slick.currentTarget);
@@ -125,7 +150,7 @@ $(function(){
 			playPauseVideo(slick,"play");
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
-			//console.log([event, slick, image, imageSource]);
+			console.log([event, slick, image, imageSource]);
 			image.closest('.slide-image').css('background-image', 'url("' + imageSource + '")'); 
 			image.hide();
 			image.closest('.slide-image').addClass('show');

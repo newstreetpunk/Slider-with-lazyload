@@ -153,10 +153,10 @@
 			};
 
 			this.observer = new IntersectionObserver(function(entries) {
-				//console.log([156, entries]);
+				// console.log([156, entries]);
 				Array.prototype.forEach.call(entries, function (entry) {
 					if (entry.isIntersecting && entry.boundingClientRect.height > 0) {
-						//console.log([158, entry.isIntersecting, entry.target]);
+						// console.log([158, entry.isIntersecting, entry.target]);
 						self.observer.unobserve(entry.target);
 						self.oneFunc(entry.target);
 					}
@@ -263,12 +263,11 @@
 				smth.style.backgroundImage = 'url("' + srcbackground + '")';
 			} else if (srcbackgroundimageset !== null) {
 
-				let self = this;				
-				this.lazyloadFromSet(srcbackgroundimageset, smth);
-				window.addEventListener('resize', function(){
-					self.lazyloadFromSet(srcbackgroundimageset, smth)
-				});
-				
+				// let self = this;				
+				// this.lazyloadFromSet(srcbackgroundimageset, smth);
+				// window.addEventListener('resize', function(){
+				// 	self.lazyloadFromSet(srcbackgroundimageset, smth)
+				// });
 			} else {
 				smth.style.backgroundImage = 'url("' + src + '")';
 			}
@@ -293,8 +292,9 @@
 			}
 
 			this.loadImg(urlImg, function(){
-				smth.style.backgroundImage = 'url("' + urlImg + '")';
-				self.removeSelector(smth);
+				// smth.style.backgroundImage = 'url("' + urlImg + '")';
+				smth.append('<img data-lazy="'+urlImg+'" class="image-entity">');
+				// self.removeSelector(smth);
 			});
 		},
 
