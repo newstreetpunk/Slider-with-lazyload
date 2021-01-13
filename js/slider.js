@@ -139,6 +139,12 @@ $(function(){
 			slideWrapper.slick('init');
 			res = true;
 		}
+		if (screenWidth > brackpoint && res == true) {
+			slideWrapper.slick('unslick');
+			lazyloadFromSet();
+			slideWrapper.slick('init');
+			res = false;
+		}
 	});
 
 	// DOM Ready
