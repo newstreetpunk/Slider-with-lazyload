@@ -110,7 +110,7 @@ $(function(){
 			let imageSetLinks = attr.split(',');
 			let desktopImg = imageSetLinks[0];
 			let mobileImg = imageSetLinks[1].split('|')[1];
-			let brackpoint = parseInt(imageSetLinks[1].split('|')[0].replace(/\D+/g,''));
+			brackpoint = parseInt(imageSetLinks[1].split('|')[0].replace(/\D+/g,''));
 			let screenWidth = $(window).width();
 			let urlImg = '';
 
@@ -126,6 +126,20 @@ $(function(){
 	}
 
 	lazyloadFromSet();
+
+	res = false;
+
+	$(window).on('resize', function(){
+		let screenWidth = $(window).width();
+		console.log(screenWidth);
+		console.log(brackpoint);
+		if (screenWidth <= brackpoint && res == false) {
+			slideWrapper.slick('unslick');
+			lazyloadFromSet();
+			slideWrapper.slick('init');
+			res = true;
+		}
+	});
 
 	// DOM Ready
 	$(function() {
@@ -150,10 +164,10 @@ $(function(){
 			playPauseVideo(slick,"play");
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
-			console.log([event, slick, image, imageSource]);
+			//console.log([event, slick, image, imageSource]);
 			image.closest('.slide-image').css('background-image', 'url("' + imageSource + '")'); 
-			image.hide();
 			image.closest('.slide-image').addClass('show');
+			image.remove();
 			lazyCounter++;
 			if (lazyCounter === lazyImages.length){
 				lazyImages.addClass('show');
