@@ -169,8 +169,8 @@ $(function(){
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
 			//console.log([event, slick, image, imageSource]);
-			image.closest('.slide-image').addClass('show');
 			image.closest('.slide-image').css('background-image', 'url("' + imageSource + '")'); 
+			image.closest('.slide-image').addClass('show');
 			image.remove();
 			lazyCounter++;
 			if (lazyCounter === lazyImages.length){
