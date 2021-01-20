@@ -839,6 +839,7 @@ form button {
   top: 44%;
   left: 0;
   text-align: center;
+  display: block;
   width: 100%;
 }
 
