@@ -127,7 +127,11 @@ $(function(){
 
 	lazyloadFromSet();
 
-	res = false;
+	if ($(window).width() > $(window).height()) {
+		res = false;
+	}else{
+		res = true;
+	}
 
 	$(window).on('resize', function(){
 		let screenWidth = $(window).width();
