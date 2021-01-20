@@ -61,9 +61,7 @@ projects.slider = {
 		src: [
 			'node_modules/jquery/dist/jquery.min.js',
 			'node_modules/slick-carousel/slick/slick.js',
-			// 'node_modules/slick-carousel/slick/slick.min.js',
 			basename + '/libs/lazyload/lazyload.js',
-			basename + '/libs/lazypreview.js',
 			basename + '/js/slider.js', // Always at the end
 		],
 		dest:       basename + '/js',
