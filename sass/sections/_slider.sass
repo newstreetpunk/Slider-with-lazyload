@@ -58,7 +58,7 @@ $black: #000
 	min-height: 600px
 	height: $height_banner
 	margin-bottom: 5rem
-	opacity: 0
+	opacity: 1
 	visibility: hidden
 	transition: all 1.2s ease
 
@@ -96,13 +96,15 @@ $black: #000
 		iframe
 			position: relative
 			pointer-events: none
+			width: 100% !important
+			left: 0 !important
 
 		figure
 			position: relative
 			height: 100%
 
 		.slide-image
-			opacity: 0
+			opacity: 1
 			height: 100%
 			background-size: cover
 			background-position: center
