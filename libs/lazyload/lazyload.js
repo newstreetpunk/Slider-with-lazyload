@@ -63,11 +63,8 @@
 	const defaults = {
 		src: "data-src",
 		srcset: "data-srcset",
-		old_srcbefore: "data-srcbefore",
-		old_srcafter: "data-srcafter",
 		srcbefore: "data-src-before",
 		srcafter: "data-src-after",
-		old_srcclass: "data-lazynowclass",
 		srcclass: "data-src-class",
 		srcbackground: "data-src-background",
 		srcbackgroundimageset: "data-src-background-image-set",
@@ -190,9 +187,6 @@
 			let srcbefore = smth.getAttribute(this.settings.srcbefore);
 			let srcafter = smth.getAttribute(this.settings.srcbefore);
 			let srcclass = smth.getAttribute(this.settings.srcclass);
-			let old_srcbefore = smth.getAttribute(this.settings.old_srcbefore);
-			let old_srcafter = smth.getAttribute(this.settings.old_srcbefore);
-			let old_srcclass = smth.getAttribute(this.settings.old_srcclass);
 			let srcbackground = smth.getAttribute(this.settings.srcbackground);
 			let srcbackgroundimageset = smth.getAttribute(this.settings.srcbackgroundimageset);
 			let removeSelector = false;
@@ -248,19 +242,19 @@
 					smth.load();
 				}
 			} else if (srcbefore !== null) {
-				smth.pseudoStyle('before', 'background-image', 'url("' + srcbefore + '")');
+				this.loadImg(srcbefore, function(){
+					smth.pseudoStyle('before', 'background-image', 'url("' + srcbefore + '")');
+				});
 			} else if (srcafter !== null) {
-				smth.pseudoStyle('after', 'background-image', 'url("' + srcafter + '")');
+				this.loadImg(srcafter, function(){
+					smth.pseudoStyle('after', 'background-image', 'url("' + srcafter + '")');
+				});
 			} else if (srcclass !== null) {
 				smth.classList.add(srcclass);
-			} else if (old_srcbefore !== null) {
-				smth.pseudoStyle('before', 'background-image', 'url("' + old_srcbefore + '")');
-			} else if (old_srcafter !== null) {
-				smth.pseudoStyle('after', 'background-image', 'url("' + old_srcafter + '")');
-			} else if (old_srcclass !== null) {
-				smth.classList.add(old_srcclass);
 			} else if (srcbackground !== null) {
-				smth.style.backgroundImage = 'url("' + srcbackground + '")';
+				this.loadImg(srcbackground, function(){
+					smth.style.backgroundImage = 'url("' + srcbackground + '")';
+				});				
 			} else if (srcbackgroundimageset !== null) {
 				let self = this;				
 				this.lazyloadFromSet(srcbackgroundimageset, smth);

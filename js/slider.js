@@ -87,14 +87,12 @@ $(function(){
 		iframes.each(function(){
 			var current = $(this);
 			if (width / ratio < height) {
-				console.log('1');
 				playerWidth = Math.ceil(height * ratio);
 				current.width(playerWidth).height(height).css({
 					left: (width - playerWidth) / 2,
 					top: 0
 				});
 			} else {
-				console.log('2');
 				playerHeight = Math.ceil(width / ratio);
 				current.width(width).height(playerHeight).css({
 					left: 0,
@@ -230,10 +228,12 @@ $(function(){
 	});
 
 	// Прослушка события смены ориентации
-	// window.addEventListener("orientationchange", function() {
-	// 	resizePlayer(iframes, 16/9);
-	// 	alert(window.orientation);
-	// }, true);
+	window.addEventListener("orientationchange", function() {
+		setTimeout(function(){
+			resizePlayer(iframes, 16/9);
+		}, 500);
+		// alert(window.orientation);
+	}, false);
 
 	lazyload();
 
