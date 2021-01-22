@@ -769,6 +769,12 @@ form button {
   transition: all 1.2s ease;
 }
 
+@media (max-width: 991.98px) {
+  .main-slider {
+    min-height: calc( 94vh - 0px);
+  }
+}
+
 .main-slider.slick-initialized {
   opacity: 1;
   visibility: visible;
@@ -781,6 +787,12 @@ form button {
   width: 100%;
   border: none;
   overflow: hidden;
+}
+
+@media (max-width: 991.98px) {
+  .main-slider .slick-slide {
+    min-height: calc( 94vh - 0px);
+  }
 }
 
 .main-slider .slick-slide:not(.without_text):before {
@@ -807,6 +819,7 @@ form button {
 .main-slider .slick-slide iframe {
   position: relative;
   pointer-events: none;
+  min-width: 100%;
 }
 
 .main-slider .slick-slide figure {

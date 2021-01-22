@@ -262,12 +262,12 @@
 			} else if (srcbackground !== null) {
 				smth.style.backgroundImage = 'url("' + srcbackground + '")';
 			} else if (srcbackgroundimageset !== null) {
-
-				// let self = this;				
-				// this.lazyloadFromSet(srcbackgroundimageset, smth);
-				// window.addEventListener('resize', function(){
-				// 	self.lazyloadFromSet(srcbackgroundimageset, smth)
-				// });
+				let self = this;				
+				this.lazyloadFromSet(srcbackgroundimageset, smth);
+				window.addEventListener('resize', function(){
+					console.log('resize');
+					self.lazyloadFromSet(srcbackgroundimageset, smth)
+				});
 			} else {
 				smth.style.backgroundImage = 'url("' + src + '")';
 			}
@@ -292,9 +292,8 @@
 			}
 
 			this.loadImg(urlImg, function(){
-				// smth.style.backgroundImage = 'url("' + urlImg + '")';
-				smth.append('<img data-lazy="'+urlImg+'" class="image-entity">');
-				// self.removeSelector(smth);
+				smth.style.backgroundImage = 'url("' + urlImg + '")';
+				self.removeSelector(smth);
 			});
 		},
 

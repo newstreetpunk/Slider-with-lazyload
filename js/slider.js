@@ -1,7 +1,8 @@
 $(function(){
 
-	var slideWrapper = $(".main-slider"),
-	iframes = slideWrapper.find('.embed-player'),
+	slideWrapper = $(".main-slider");
+
+	let iframes = slideWrapper.find('.embed-player'),
 	lazyImages = slideWrapper.find('.slide-image'),
 	lazyCounter = 0;
 
@@ -86,12 +87,14 @@ $(function(){
 		iframes.each(function(){
 			var current = $(this);
 			if (width / ratio < height) {
+				console.log('1');
 				playerWidth = Math.ceil(height * ratio);
 				current.width(playerWidth).height(height).css({
 					left: (width - playerWidth) / 2,
 					top: 0
 				});
 			} else {
+				console.log('2');
 				playerHeight = Math.ceil(width / ratio);
 				current.width(width).height(playerHeight).css({
 					left: 0,
@@ -101,10 +104,21 @@ $(function(){
 		});
 	}
 
-	function lazyloadFromSet() {
-		let parent = $('.image-set');
+	// Функция видимости слайда с data-src-background-image-set, чтобы перезапускать слайдер только, когда слайд в виден
+	function currentSet(){
+		let currentSet = slideWrapper.find(".slick-active");
 
-		parent.each(function(){
+		if (currentSet.find('.image-set').length > 0) {
+			onRefresh = true; //если виден
+		}else{
+			onRefresh = false; //если не виден
+		}
+	}
+
+	// Функция разбора атрибута data-src-background-image-set
+	function lazyloadFromSet() {
+		item = $('.image-set');
+		item.each(function(){
 			let th = $(this);
 			let attr = th.data('src-background-image-set');
 			let imageSetLinks = attr.split(',');
@@ -120,34 +134,20 @@ $(function(){
 				urlImg = desktopImg;
 			}
 
-			th.append('<img data-lazy="'+urlImg+'" class="image-entity">');
+			th.append('<img data-lazy="'+urlImg+'" class="image-entity">'); // img для Slick LazyLoad
+			
 		});
 
 	}
 
 	lazyloadFromSet();
 
+	//проверка в каком положении мобильный девайз, чтобы при скролле не считался resize
 	if ($(window).width() > $(window).height()) {
-		res = false;
+		res = false; //горизонтально
 	}else{
-		res = true;
-	}
-
-	$(window).on('resize', function(){
-		let screenWidth = $(window).width();
-		if (screenWidth <= brackpoint && res == false) {
-			slideWrapper.slick('unslick');
-			lazyloadFromSet();
-			slideWrapper.slick('refresh');
-			res = true;
-		}
-		if (screenWidth > brackpoint && res == true) {
-			slideWrapper.slick('unslick');
-			lazyloadFromSet();
-			slideWrapper.slick('refresh');
-			res = false;
-		}
-	});
+		res = true; //вертикально
+	}	
 
 	// DOM Ready
 	$(function() {
@@ -158,10 +158,7 @@ $(function(){
 				playPauseVideo(slick,"play");
 			}, 1000);
 			resizePlayer(iframes, 16/9);
-			// if(window.innerWidth>window.innerHeight)
-			// else 
-					// resizePlayer(iframes, 9/16);
-			// resizePlayer(iframes, window.innerWidth/window.innerHeight);
+			currentSet();
 		});
 		slideWrapper.on("beforeChange", function(event, slick) {
 			slick = $(slick.$slider);
@@ -170,16 +167,15 @@ $(function(){
 		slideWrapper.on("afterChange", function(event, slick) {
 			slick = $(slick.$slider);
 			playPauseVideo(slick,"play");
+			currentSet();
 		});
 		slideWrapper.on("lazyLoaded", function(event, slick, image, imageSource) {
-			//console.log([event, slick, image, imageSource]);
 			image.closest('.slide-image').css('background-image', 'url("' + imageSource + '")'); 
 			image.closest('.slide-image').addClass('show');
 			image.remove();
 			lazyCounter++;
 			if (lazyCounter === lazyImages.length){
 				lazyImages.addClass('show');
-				// slideWrapper.slick("slickPlay");
 			}
 		});
 
@@ -203,14 +199,41 @@ $(function(){
 		});
 	});
 
+	//ресайз
+	if (item.length > 0 ) { //если вообще есть слайды с атрибутом data-src-background-image-set
+		$(window).on('resize', function(){
+			let screenWidth = $(window).width();
+			if (screenWidth <= brackpoint && res == false) {
+				if (onRefresh) { //перезапускаем слайдер, если слайд с data-src-background-image-set в зоне видимости
+					slideWrapper.slick('unslick');
+					lazyloadFromSet();
+					slideWrapper.slick('refresh');
+					res = true;
+				}
+				
+			}
+			if (screenWidth > brackpoint && res == true) {
+				if (onRefresh) { //перезапускаем слайдер, если слайд с data-src-background-image-set в зоне видимости
+					slideWrapper.slick('unslick');
+					lazyloadFromSet();
+					slideWrapper.slick('refresh');
+					res = false;
+				}
+				
+			}
+		});
+	}
+
 	// Resize event
-	$(window).on("resize.slickVideoPlayer", function(){  
+	$(window).resize(function(){  
 		resizePlayer(iframes, 16/9);
-		// if(window.innerWidth>window.innerHeight)
-		// else 
-		// resizePlayer(iframes, 9/16);
-		// resizePlayer(iframes, window.innerWidth/window.innerHeight);
 	});
+
+	// Прослушка события смены ориентации
+	// window.addEventListener("orientationchange", function() {
+	// 	resizePlayer(iframes, 16/9);
+	// 	alert(window.orientation);
+	// }, true);
 
 	lazyload();
 
